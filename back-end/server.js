@@ -5,7 +5,8 @@ var app = express()
 
 var posts = [
     { message: 'hola'},
-    { message: 'hi'}
+    { message: 'hi'},
+    { message: 'opa'}
 ]
 
 app.use(cors())
