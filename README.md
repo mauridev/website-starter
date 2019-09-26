@@ -2,6 +2,12 @@
 
 MEAN Stack 
 
+Functionalities:
+Register User.
+  - Email
+  - Password
+
+
 Front End: Angular
 
 Backend: 
