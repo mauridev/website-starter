@@ -1,4 +1,4 @@
-# website-starter
+# Starter Full Stack Website
 
 MEAN Stack 
 
