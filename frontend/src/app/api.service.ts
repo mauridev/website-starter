@@ -12,4 +12,14 @@ export class ApiService {
             this.messages = res;
         });
     }
+
+    sendUserRegistration(registerData) {
+        this.httpClient.post('http://localhost:3001/register', registerData, {responseType: 'text'}).subscribe(res => {
+        });
+    }
+
+    loginUser(loginData) {
+        this.httpClient.post('http://localhost:3001/login', loginData, {responseType: 'text'}).subscribe(res => {
+        });
+    }
 }
