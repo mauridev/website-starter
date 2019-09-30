@@ -7,6 +7,7 @@ var mongoose = require('mongoose')
 var app = express()
 
 var User = require('./models/User')
+var Post = require('./models/Post')
 var auth = require('./auth')
 
 var posts = [
@@ -21,6 +22,19 @@ app.use(bodyParser.json())
 app.get('/posts', (req, res) => {
     res.send(posts)
 })
+
+app.post('/post', (req, res) => {
+    var post = new Post(req.body)
+    post.save((err, result) => {
+        if (err)
+            console.log('There is an error saving the post')
+            res.status(500).send({ message: 'There is an error saving the post'})
+           
+        res.sendStatus(200)    
+    })  
+})
+
+
 
 app.get('/users', async (req, res) => {
     try {
