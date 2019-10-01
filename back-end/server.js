@@ -10,26 +10,28 @@ var User = require('./models/User')
 var Post = require('./models/Post')
 var auth = require('./auth')
 
-var posts = [
-    { message: 'hola'},
-    { message: 'hi'},
-    { message: 'opa'}
-]
+
 
 app.use(cors())
 app.use(bodyParser.json())
 
-app.get('/posts', (req, res) => {
+app.get('/posts/:id', async(req, res) => {
+    var author = req.params.id
+    var posts = await Post.find({author})
     res.send(posts)
 })
 
 app.post('/post', (req, res) => {
-    var post = new Post(req.body)
+    var postData = req.body
+    postData.author = '5d8ec4b2c194a411889b9631'
+
+
+    var post = new Post(postData)
     post.save((err, result) => {
-        if (err)
+        if (err) {
             console.log('There is an error saving the post')
             res.status(500).send({ message: 'There is an error saving the post'})
-           
+        }
         res.sendStatus(200)    
     })  
 })
