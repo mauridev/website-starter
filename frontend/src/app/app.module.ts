@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -18,6 +18,7 @@ import { PostComponent } from './post.component';
 /*Services */
 import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
+import { AuthinterceptorService } from './authinterceptor.service';
 
 /*Material Modules */
 import { MatButtonModule } from '@angular/material/button';
@@ -50,7 +51,12 @@ import {MatListModule} from '@angular/material/list';
   ],
   providers: [
     ApiService,
-    AuthService
+    AuthService,
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthinterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

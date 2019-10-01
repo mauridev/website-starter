@@ -29,7 +29,7 @@ var router = express.Router()
             if(!isMatch)
                 return res.status(401).send({ message: 'Email or Password invalid'})
     
-            var payload = {}
+            var payload = { sub: user._id }
             var token = jwt.encode(payload, '123')
             res.status(200).send({token})
         })    

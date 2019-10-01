@@ -9,7 +9,7 @@ export class ApiService {
     constructor( private httpClient: HttpClient) {}
 
     getMessages(userId) {
-        this.httpClient.get(this.path + '/posts/' + userId).subscribe(res => {
+        this.httpClient.get<any>(this.path + '/posts/' + userId).subscribe(res => {
             console.log(res);
             this.messages = res;
         });
@@ -21,7 +21,7 @@ export class ApiService {
     }
 
     getUsers() {
-        this.httpClient.get(this.path + '/users').subscribe(res => {
+        this.httpClient.get<any>(this.path + '/users').subscribe(res => {
             console.log(res);
             this.users = res;
         });

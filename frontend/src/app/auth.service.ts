@@ -7,15 +7,14 @@ export class AuthService {
     constructor( private httpClient: HttpClient) {}
 
     registerUser(registerData) {
-        this.httpClient.post(this.path + '/register', registerData, {responseType: 'text'}).subscribe(res => {
+        this.httpClient.post(this.path + '/register', registerData).subscribe(res => {
         });
     }
 
     loginUser(loginData) {
-        let tokenRecived;
-        this.httpClient.post(this.path + '/login', loginData, {responseType: 'json'}).subscribe(res => {
-            tokenRecived = res;
-            localStorage.setItem('token', tokenRecived.token);
+        this.httpClient.post<any>(this.path + '/login', loginData).subscribe(res => {
+            console.log(res);
+            localStorage.setItem('token', res.token);
         });
     }
 }
