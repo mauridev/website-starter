@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-post',
   template: `
-            <mat-card>
+            <mat-card *ngIf="authService.isAuthenticated">
             <mat-card-header>
                 <mat-card-title>
                     <h4>New Post</h4>
@@ -20,10 +21,22 @@ import { ApiService } from './api.service';
                 </form>
             </mat-card-content>
             </mat-card>
+
+            <mat-card *ngIf="!authService.isAuthenticated">
+            <mat-card-header>
+                <mat-card-title>
+                    <h4>You need to be authenticated to view this page</h4>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+               
+            </mat-card-content>
+            </mat-card>
+
             `
 })
 export class PostComponent {
-  constructor( private apiService: ApiService) {}
+  constructor( private apiService: ApiService, private authService: AuthService) {}
   postMsg = ''
 
   post() {

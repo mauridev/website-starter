@@ -2,6 +2,7 @@ var express = require('express')
 var cors = require('cors')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
+var jwt = require('jwt-simple')
 
 
 var app = express()
@@ -15,15 +16,17 @@ var auth = require('./auth')
 app.use(cors())
 app.use(bodyParser.json())
 
+
+
 app.get('/posts/:id', async(req, res) => {
     var author = req.params.id
     var posts = await Post.find({author})
     res.send(posts)
 })
 
-app.post('/post', (req, res) => {
+app.post('/post', auth.checkAuthenticated, (req, res) => {
     var postData = req.body
-    postData.author = '5d8ec4b2c194a411889b9631'
+    postData.author = req.userId
 
 
     var post = new Post(postData)
@@ -39,9 +42,9 @@ app.post('/post', (req, res) => {
 
 
 app.get('/users', async (req, res) => {
-    try {
+    try {   
         var users = await User.find({}, '-pwd -__v  ')
-    res.send(users)
+        res.send(users)
     } catch (error) {
         console.log(error)
         res.sendStatus(500)
@@ -67,6 +70,6 @@ mongoose.connect('mongodb+srv://mauridev:ElectromecanicA21@maurimongo-pbqll.mong
         console.log('Connected')
 })
 
-app.use('/auth', auth)
+app.use('/auth', auth.router)
 
 app.listen(3001)
