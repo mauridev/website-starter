@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from './../environments/environment';
 
 @Injectable()
 export class ApiService {
     private messages;
     private users;
-    path = "http://localhost:3001"
+    path = environment.path;
     constructor( private httpClient: HttpClient) {}
 
     getMessages(userId) {
