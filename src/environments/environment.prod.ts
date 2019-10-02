@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  path: 'http://localhost:3001'
+  path: 'https://starter-full-stack-web.herokuapp.com'
 };
