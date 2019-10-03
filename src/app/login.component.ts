@@ -25,8 +25,11 @@ import { AuthService } from './auth.service';
   `
 })
 export class LoginComponent {
-  constructor( private authService: AuthService) {}
-  loginData = {};
+  constructor( public authService: AuthService) {}
+  loginData = {
+    email:'',
+    pwd: ''
+  };
 
   post() {
     this.authService.loginUser(this.loginData);

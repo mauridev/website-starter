@@ -4,10 +4,10 @@ import { environment } from './../environments/environment';
 
 @Injectable()
 export class ApiService {
-    private messages;
-    private users;
+    public messages;
+    public users;
     path = environment.path;
-    constructor( private httpClient: HttpClient) {}
+    constructor( public httpClient: HttpClient) {}
 
     getMessages(userId) {
         this.httpClient.get<any>(this.path + '/posts/' + userId).subscribe(res => {

@@ -10,7 +10,7 @@ import { ApiService } from './api.service';
             `
 })
 export class UsersComponent implements OnInit {
-  constructor( private apiService: ApiService) {}
+  constructor( public apiService: ApiService) {}
 
  ngOnInit() {
      this.apiService.getUsers()

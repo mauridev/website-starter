@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
             `
 })
 export class MessageComponent implements OnInit {
-  constructor( private apiService: ApiService, private route: ActivatedRoute) {}
+  constructor( public apiService: ApiService, public route: ActivatedRoute) {}
 
   ngOnInit() {
     var userId = this.route.snapshot.params.id

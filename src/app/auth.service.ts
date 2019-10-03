@@ -6,7 +6,7 @@ import { environment } from './../environments/environment';
 export class AuthService {
     path = environment.path +  '/auth';
     TOKEN_KEY = 'token';
-    constructor( private httpClient: HttpClient) {}
+    constructor( public httpClient: HttpClient) {}
 
     get token() {
         return localStorage.getItem(this.TOKEN_KEY)

@@ -6,9 +6,14 @@ import { AuthService } from './auth.service';
   templateUrl: 'register.component.html'
 })
 export class RegisterComponent {
-  constructor( private authService: AuthService) {}
-  registerData = {};
-
+  constructor( public authService: AuthService) {}
+  registerData = {
+    email:'',
+    pwd: '',
+    name: '',
+    description: ''
+  };
+ 
   post() {
     console.log(this.registerData);
     this.authService.registerUser(this.registerData);
