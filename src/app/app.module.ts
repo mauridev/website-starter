@@ -7,9 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*Components */
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './messages.component';
 import { RegisterComponent } from './register.component';
-import { LoginComponent } from './login.component';
+import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users.component';
 import { ProfileComponent } from './profile.component';
 import { PostComponent } from './post.component';
@@ -23,9 +24,14 @@ import { AuthinterceptorService } from './authinterceptor.service';
 /*Material Modules */
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { HeaderComponent } from './navigation/header/header.component';
+import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,10 @@ import {MatListModule} from '@angular/material/list';
     LoginComponent,
     UsersComponent,
     ProfileComponent,
-    PostComponent
+    PostComponent,
+    HomeComponent,
+    HeaderComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
@@ -47,12 +56,15 @@ import {MatListModule} from '@angular/material/list';
     MatCardModule,
     MatToolbarModule,
     MatInputModule,
-    MatListModule
+    MatListModule,
+    MatSidenavModule,
+    MatIconModule,
+    FlexLayoutModule
   ],
   providers: [
     ApiService,
     AuthService,
-    { 
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthinterceptorService,
       multi: true
