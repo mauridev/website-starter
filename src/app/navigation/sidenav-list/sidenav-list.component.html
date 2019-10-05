@@ -2,10 +2,10 @@
         <a mat-list-item routerLink="/" (click)="onSidenavClose()">
             <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
         </a>
-        <a mat-list-item routerLink="/register"  (click)="onSidenavClose()">
+        <a mat-list-item *ngIf="!authService.isAuthenticated" routerLink="/register"  (click)="onSidenavClose()">
             <mat-icon>fingerprint</mat-icon> <span class="nav-caption">Register</span>   
         </a>
-        <a mat-list-item routerLink="/login" (click)="onSidenavClose()">
+        <a mat-list-item *ngIf="!authService.isAuthenticated" routerLink="/login" (click)="onSidenavClose()">
             <mat-icon>input</mat-icon><span class="nav-caption">Login</span>
         </a>
         <a mat-list-item routerLink="/post" (click)="onSidenavClose()">
@@ -14,7 +14,7 @@
         <a mat-list-item routerLink="/users" (click)="onSidenavClose()">
             <mat-icon>list</mat-icon><span class="nav-caption">Users</span>
         </a>
-        <a mat-list-item routerLink="/logout" (click)="onSidenavClose()">
+        <a mat-list-item *ngIf="authService.isAuthenticated" (click)="authService.logout()" (click)="onSidenavClose()">
             <mat-icon>outdoor_grill</mat-icon><span class="nav-caption">Logout</span>
         </a>
 </mat-nav-list>
