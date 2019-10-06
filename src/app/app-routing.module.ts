@@ -7,6 +7,9 @@ import { UsersComponent } from './users.component';
 import { ProfileComponent } from './profile.component';
 import { PostComponent } from './post.component';
 
+/*SEEU COMPONENTS */
+import { DashboardComponent } from './seeu/dashboard/dashboard.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +18,7 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent }, 
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'post', component: PostComponent },
+  { path: 'seeu/dashboard', component: DashboardComponent }
 ];
 
 @NgModule({

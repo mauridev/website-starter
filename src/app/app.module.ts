@@ -32,6 +32,9 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { EntryComponent } from './seeu/entry/entry.component';
+import { DashboardComponent } from './seeu/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     PostComponent,
     HomeComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    EntryComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
